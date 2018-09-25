@@ -1,0 +1,110 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Acme' , sans-serif;
+}
+
+.wrapper {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: RGB(225,225,232);
+}
+
+.drum {
+  outline: none;
+  max-width: 80%;
+  min-width: 320px;
+  border: 1px solid black;
+  display: grid;
+  grid-template-columns: 1.75fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "b c";
+  grid-gap: 10px;
+  padding: 15px;
+  background: RGB(43,10,10);
+  box-shadow: 1px 1px 1px;
+  border-radius: 15px;
+}
+
+.drum__pad {
+  grid-area: b;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-gap: 10px;
+}
+
+.drum__controls {
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+  justify-content: center;
+  align-items: center;
+  grid-area: c;
+  border-left: 2px solid black;
+  padding-left: 10px;
+}
+
+.drum__pad__button {
+  text-align: center;
+  border-radius: 5px;
+  border: 1px solid black;
+  padding: 15px 10px;
+  cursor: pointer;
+  background: RGB(113,30,30);
+  font-size: 1.8em;
+  color: #fff;
+  user-select: none;
+  box-shadow: 0 0 3px gray, 0 0 3px aqua, 0 0 7px yellow; 
+  text-shadow: 0 0 8px yellow; 
+}
+
+.drum__pad__button_active {
+  background: RGB(154,148,148);
+}
+
+.drum__controls__turn{
+  display: flex;
+  justify-content: space-around;
+}
+
+.drum__controls__turn__on, .drum__controls__turn__off{
+  padding: 5px 10px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 0.9em;
+  font-weight: bold;
+  border-radius: 4px;
+  outline: none;
+}
+
+.drum__controls__turn__on_active, .drum__controls__turn__off_active{
+  background-color: cornsilk;
+}
+
+.drum__controls__output {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+  background-color: #ccc;
+  height: 30px;
+}
+
+.drum__controls__volume__input {
+  cursor: pointer;
+}
+
+.drum__controls__instr{
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.drum__controls__instr select{
+  width: 100px;
+  padding: 3px;
+  font-size: 1em;
+}

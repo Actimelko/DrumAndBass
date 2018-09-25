@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <title>drum and bass</title>
+  <link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet">
+  <link rel="stylesheet" href="../dist/styles.css">
+</head>
+<body>
+<div class="wrapper">
+
+ <div id="drum-machine" class="drum" tabindex="-1">
+   <div class="drum__pad">
+     
+   </div>
+   <div class="drum__controls">
+     <div class="drum__controls__turn">
+       <button class="drum__controls__turn__on drum__controls__turn__on_active">ON</button>
+       <button class="drum__controls__turn__off">OFF</button>
+     </div>
+     <div class="drum__controls__output">
+       <div class="drum__controls__output__display">...</div>
+     </div>
+     <div class="drum__controls__volume">
+       <input class="drum__controls__volume__input" type="range" step="0.01" min="0" max="1" value="0.75">
+     </div>
+     <div class="drum__controls__instr">
+       <select name="instruments">
+         <option value="heater" selected>Heater</option>
+         <option value="piano">Piano</option>
+       </select>
+     </div>
+   </div>
+ </div>
+ 
+</div>
+  <script src="../dist/main.js"></script>
+</body>
+</html>
