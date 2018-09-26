@@ -3,7 +3,7 @@ import instruments from './instruments.json';
 export function DrumMachine(options) {
   const elem = this._elem = options.elem;
   this._isActive = true;
-  this._instrument = elem.querySelector('select[name="instruments"]').value;
+  this._instrument = null;
   this._volume = elem.querySelector('.drum__controls__volume input').value;
   this._info = this._printInfo();
   elem.addEventListener('change', this._changeInstrument.bind(this));
@@ -25,7 +25,6 @@ DrumMachine.prototype._printInfo = function() {
     }, 1000);
   }
   infoD.infoTimer = null;
-  
   return infoD;
 }
 
@@ -73,7 +72,6 @@ DrumMachine.prototype._playClick = function (e) {
 }
 
 DrumMachine.prototype._playBtn = function (e) {
-  console.log(e.keyCode);
   if (this._isActive) {
     const char = String.fromCharCode(e.keyCode);
     this._playAudio(char);
@@ -129,11 +127,26 @@ DrumMachine.prototype._changeAudioSrc = function () {
   for (let i = 0; i < audios.length; i++) {
     const audio = audios[i];
     audio.src = instrument[i].src;
+    const dataInfo = audio.src.slice(audio.src.lastIndexOf('/') + 1, audio.src.lastIndexOf('.'));
+    audio.setAttribute('data-info', dataInfo);
   }
 }
 
+DrumMachine.prototype._renderOptions = function () {
+  const keys = Object.keys(instruments);
+  const select = document.querySelector('.drum__controls__instr select');
+  keys.forEach( (key, i) => {
+    const option = new Option(key, key, i == 0 ? true : false);
+    select.append(option);
+    
+  })
+}
+
 DrumMachine.prototype.render = function () {
+  this._renderOptions();
+  this._instrument = this._elem.querySelector('select[name="instruments"]').value;
   let instrument = instruments[this._instrument];
+  
   const pad = this._elem.querySelector('.drum__pad')
   instrument.forEach(el => {
     const div = document.createElement('div');
@@ -149,3 +162,5 @@ DrumMachine.prototype.render = function () {
     pad.append(div);
   })
 }
+
+

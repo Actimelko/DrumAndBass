@@ -107,6 +107,7 @@
   width: 100px;
   padding: 3px;
   font-size: 1em;
+  text-transform: capitalize;
 }
 
 @media all and (max-width: 320px) {
